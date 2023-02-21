@@ -4,26 +4,26 @@ import java.util.Arrays;
 
 public class MyLinkedList {
 	
-	private Node first;
-	private Node last;
+	private Node head;
 	private int size;
 	
 	
 	// add a new value to a list
 	public void add(int value) {
-		last = first;
+
 		Node newNode = new Node(value);
-		if (first == null) {
-			first = newNode;
+		if (head == null) {
+			head = newNode;
 
 		} else {
-			while (last.next != null) {
-				last.prev = last;
-				last = last.next;
+			Node temp = head;
+			while (temp.next != null) {
+				temp.prev = temp;
+				temp = temp.next;
 			}
 
-			last.next = newNode;
-			newNode.prev = last;
+			temp.next = newNode;
+			newNode.prev = temp;
 		}
 		size++;
 
@@ -33,12 +33,12 @@ public class MyLinkedList {
 	// remove node from a list through its index
 	public void remove(int index) {
 		int currentIndex = 0;
-		Node temp = first;
+		Node temp = head;
 
 		// if its a first Node
 		if (index == 0) {
-			first = first.next;
-			first.prev = null;
+			head = head.next;
+			head.prev = null;
 			size--;
 			return;
 		}
@@ -55,21 +55,22 @@ public class MyLinkedList {
 			size--;
 			return;
 
-		}
+		} else {
 
-		while (temp != null) {
-			if (currentIndex == index) {
-				temp.next.prev = temp.prev;
-				temp.prev.next = temp.next;
-				temp.next = null;
-				temp.prev = null;
+			while (temp != null) {
+				if (currentIndex == index) {
+					temp.next.prev = temp.prev;
+					temp.prev.next = temp.next;
+					temp.next = null;
+					temp.prev = null;
 
-				size--;
-				return;
+					size--;
+					return;
+				}
+
+				temp = temp.next;
+				currentIndex++;
 			}
-
-			temp = temp.next;
-			currentIndex++;
 		}
 
 	}
@@ -79,7 +80,7 @@ public class MyLinkedList {
 	// return value by its index in a list
 	public int get(int index) {
 		int currentIndex = 0;
-		Node temp = first;
+		Node temp = head;
 
 		while (temp != null) {
 			if (currentIndex == index) {
@@ -103,7 +104,7 @@ public class MyLinkedList {
 	//print our list
 	public String toString() {
 		int[] result = new int[size];
-		Node temp = first;
+		Node temp = head;
 		int i = 0;
 
 		while (temp != null) {
