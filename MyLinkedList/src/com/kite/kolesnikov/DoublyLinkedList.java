@@ -2,7 +2,7 @@ package com.kite.kolesnikov;
 
 import java.util.Arrays;
 
-public class MyLinkedList {
+public class DoublyLinkedList {
 	
 	private Node head;
 	private int size;
@@ -63,6 +63,7 @@ public class MyLinkedList {
 					temp.prev.next = temp.next;
 					temp.next = null;
 					temp.prev = null;
+
 
 					size--;
 					return;

@@ -4,7 +4,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		
-		MyLinkedList list = new MyLinkedList();
+		DoublyLinkedList list = new DoublyLinkedList();
 		
 		list.add(12);
 		list.add(2);
@@ -13,7 +13,8 @@ public class Test {
 		
 		System.out.println(list.size());
 		System.out.println(list);
-		list.remove(3);
+		list.remove(1);
+		
 		
 		
 		System.out.println(list);
